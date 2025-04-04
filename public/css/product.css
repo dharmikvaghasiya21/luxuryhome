@@ -126,6 +126,14 @@ li {
     font-size: 20px;
 }
 
+.section-block .section-inner .section-items-left .section-item-left .product li .product-menu li .range {
+    display: none;
+}
+
+.section-block .section-inner .section-items-left .section-item-left .product li .product-menu li:hover .range {
+    display: block;
+}
+
 .section-block .section-inner .section-items-left .section-item-left .image {
     display: block;
     width: 100%;
