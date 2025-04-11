@@ -378,13 +378,13 @@ li {
     text-transform: capitalize;
 }
 
-.section-block .section-inner .section-items-right .section-item-rightbottom .featured-items .featured-item .featured-item-inner .featured-text>span {
+.section-block .section-inner .section-items-right .section-item-rightbottom .featured-items .featured-item .featured-item-inner .featured-text>a {
     display: inline;
     font-size: 20px;
     font-weight: 500;
 }
 
-.section-block .section-inner .section-items-right .section-item-rightbottom .featured-items .featured-item .featured-item-inner .featured-text span span {
+.section-block .section-inner .section-items-right .section-item-rightbottom .featured-items .featured-item .featured-item-inner .featured-text a a {
     display: inline;
     font-size: 16px;
     font-weight: 500;

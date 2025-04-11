@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 const Section = () => {
     const [length, setlength] = useState(1);
-    const [price ,setprice] =useState(100);
+    const [price, setprice] = useState(300); // default max
+    const [products, setProducts] = useState([
+        { id: 1, title: "accusantium dolore", price: 224.25, image: "homeimage/perspiciatis-unde.jpg" },
+        { id: 2, title: "rem aperiam", price: 224.25, image: "homeimage/rem-aperiam.jpg" },
+        { id: 3, title: "adipisci velit", price: 224.25, image: "homeimage/adipisci-velit.jpg" },
+        { id: 4, title: "omnis iste", price: 224.25, image: "homeimage/omnis-iste.jpg" },
+        { id: 5, title: "accusantium dolore", price: 100.25, image: "homeimage/perspiciatis-unde.jpg" },
+        { id: 6, title: "rem aperiam", price: 150.25, image: "homeimage/rem-aperiam.jpg" },
+        { id: 7, title: "adipisci velit", price: 189.25, image: "homeimage/adipisci-velit.jpg" },
+        { id: 8, title: "omnis iste", price: 445.25, image: "homeimage/omnis-iste.jpg" }
+    ]);
 
-    // useEffect(()=>{
-
-    // },[])
-
+    const filteredProducts = products.filter(product => product.price <= price);
 
     return (
         <>
@@ -71,8 +78,8 @@ const Section = () => {
                                             <li>
                                                 <a href="#">price</a>
                                                 <ul className="range">
-                                                    <li><input type="range" min={100} max={300} value={price}
-                                                        onChange={(e) => { setprice(e.target.value) }} />{price}</li>
+                                                    <li><input type="range" min={0} max={300} value={price}
+                                                        onChange={(e) => setprice(Number(e.target.value))} />{price}</li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -128,128 +135,27 @@ const Section = () => {
                                     </div>
                                 </div>
                                 <div className="featured-items">
-                                    <div className="featured-item">
-                                        <div className="featured-item-inner">
-                                            <div className="image">
-                                                <img src="homeimage/perspiciatis-unde.jpg" alt="" />
-                                                <div className="product-card">
-                                                    <a href="#"><i className="fa-solid fa-eye"></i></a>
-                                                    <a href=""><i className="fa-solid fa-cart-shopping"></i></a>
+                                    {filteredProducts.length > 0 ? (
+                                        filteredProducts.map(product => (
+                                            <div className="featured-item" key={product.id}>
+                                                <div className="featured-item-inner">
+                                                    <div className="image">
+                                                        <img src={product.image} alt={product.title} />
+                                                        <div className="product-card">
+                                                            <a href="#"><i className="fa-solid fa-eye"></i></a>
+                                                            <a href="#"><i className="fa-solid fa-cart-shopping"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div className="featured-text">
+                                                        <a href="#">{product.title}</a><br />
+                                                        <a>${product.price.toFixed(2)}</a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div className="featured-text">
-                                                <a href="#">accusantium dolore</a> <br />
-                                                <span>$224.25 <span>$299.00</span></span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="featured-item">
-                                        <div className="featured-item-inner">
-                                            <div className="image">
-                                                <img src="homeimage/rem-aperiam.jpg" alt="" />
-                                                <div className="product-card">
-                                                    <a href="#"><i className="fa-solid fa-eye"></i></a>
-                                                    <a href=""><i className="fa-solid fa-cart-shopping"></i></a>
-                                                </div>
-                                            </div>
-                                            <div className="featured-text">
-                                                <a href="#">rem aperiam</a> <br />
-                                                <span>$224.25 <span>$299.00</span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="featured-item">
-                                        <div className="featured-item-inner">
-                                            <div className="image">
-                                                <img src="homeimage/adipisci-velit.jpg" alt="" />
-                                                <div className="product-card">
-                                                    <a href="#"><i className="fa-solid fa-eye"></i></a>
-                                                    <a href=""><i className="fa-solid fa-cart-shopping"></i></a>
-                                                </div>
-                                            </div>
-                                            <div className="featured-text">
-                                                <a href="#">adipisci velit</a> <br />
-                                                <span>$224.25 <span>$299.00</span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="featured-item">
-                                        <div className="featured-item-inner">
-                                            <div className="image">
-                                                <img src="homeimage/omnis-iste.jpg" alt="" />
-                                                <div className="product-card">
-                                                    <a href="#"><i className="fa-solid fa-eye"></i></a>
-                                                    <a href=""><i className="fa-solid fa-cart-shopping"></i></a>
-                                                </div>
-                                            </div>
-                                            <div className="featured-text">
-                                                <a href="#">omnis iste</a> <br />
-                                                <span>$224.25 <span>$299.00</span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="featured-item">
-                                        <div className="featured-item-inner">
-                                            <div className="image">
-                                                <img src="homeimage/perspiciatis-unde.jpg" alt="" />
-                                                <div className="product-card">
-                                                    <a href="#"><i className="fa-solid fa-eye"></i></a>
-                                                    <a href=""><i className="fa-solid fa-cart-shopping"></i></a>
-                                                </div>
-                                            </div>
-                                            <div className="featured-text">
-                                                <a href="#">accusantium dolore</a> <br />
-                                                <span>$100.25 <span>$200.00</span></span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="featured-item">
-                                        <div className="featured-item-inner">
-                                            <div className="image">
-                                                <img src="homeimage/rem-aperiam.jpg" alt="" />
-                                                <div className="product-card">
-                                                    <a href="#"><i className="fa-solid fa-eye"></i></a>
-                                                    <a href=""><i className="fa-solid fa-cart-shopping"></i></a>
-                                                </div>
-                                            </div>
-                                            <div className="featured-text">
-                                                <a href="#">rem aperiam</a> <br />
-                                                <span>$150.25 <span>$250.00</span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="featured-item">
-                                        <div className="featured-item-inner">
-                                            <div className="image">
-                                                <img src="homeimage/adipisci-velit.jpg" alt="" />
-                                                <div className="product-card">
-                                                    <a href="#"><i className="fa-solid fa-eye"></i></a>
-                                                    <a href=""><i className="fa-solid fa-cart-shopping"></i></a>
-                                                </div>
-                                            </div>
-                                            <div className="featured-text">
-                                                <a href="#">adipisci velit</a> <br />
-                                                <span>$189.25 <span>$289.00</span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="featured-item">
-                                        <div className="featured-item-inner">
-                                            <div className="image">
-                                                <img src="homeimage/omnis-iste.jpg" alt="" />
-                                                <div className="product-card">
-                                                    <a href="#"><i className="fa-solid fa-eye"></i></a>
-                                                    <a href=""><i className="fa-solid fa-cart-shopping"></i></a>
-                                                </div>
-                                            </div>
-                                            <div className="featured-text">
-                                                <a href="#">omnis iste</a> <br />
-                                                <span>$445.25 <span>$600.00</span></span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        ))
+                                    ) : (
+                                        <p>No products found in this price range.</p>
+                                    )}
                                 </div>
                             </div>
                         </div>
